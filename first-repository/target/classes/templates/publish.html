@@ -1,0 +1,103 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>OLAND</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/css/community.css">
+    <link rel="stylesheet" href="/css/editormd.min.css">
+    <link rel="shortcut icon" href="images/logos/logo.ico">
+    <script src="/js/jquery-3.4.1.min.js" type="application/javascript"></script>
+    <script src="/js/community.js" type="application/javascript"></script>
+    <script src="/js/bootstrap.min.js" type="application/javascript"></script>
+    <script src="/js/editormd.min.js" type="application/javascript"></script>
+
+</head>
+<body>
+<div th:insert="~{navigation :: nav}"></div>
+<div class="container-fluid main">
+    <div class="row">
+        <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
+            <h2><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>发起</h2>
+            <hr>
+            <form action="/publish" method="post">
+                <input type="hidden" name="id" th:value="${id}">
+                <div class="form-group">
+                    <label for="title">问题标题:</label>
+                    <input type="text" class="form-control" name="title" id="title" th:value="${title}"
+                           autocomplete="off"
+                           placeholder="问题标题">
+                </div>
+                <div class="input-group" id="question-editor">
+                    <label for="description">问题补充(必填):</label>
+                    <textarea name="description" class="form-control" th:text="${description}" cols="30"
+                              id="description" style="display:none;"
+                              rows="10"></textarea>
+                </div>
+                <script type="text/javascript">
+                    $(function () {
+                        var editor = editormd("question-editor", {
+                            width: "100%",
+                            height: 350,
+                            path: "/js/lib/",
+                            delay: 0
+                        });
+                    });
+                </script>
+                <div class="form-group">
+                    <label for="tag">添加标签：</label>
+                    <input type="text" class="form-control" name="tag" th:value="${tag}" placeholder="请输入标签,以 ，号分隔"
+                           id="tag" aria-describedby="basic-addon2" autocomplete="off" onclick="showSelectTag()">
+
+                    <div id="select-tag" class="publish-tag-tab">
+                        <ul class="nav nav-tabs" role="tablist">
+<!--                            .first 判断是否是循环的第一个-->
+                            <li role="presentation" th:each="selectCategory : ${tags}"
+                                th:class="${selectCategoryStat.first ? 'active':''}">
+                                <a th:href="${'#'+selectCategory.categoryName}" aria-controls="home" role="tab"
+                                   data-toggle="tab" th:text="${selectCategory.categoryName}">
+                                </a>
+                            </li>
+                        </ul>
+
+                        <div class="tab-content">
+                            <div role="tabpanel" th:id="${selectCategory.categoryName}"
+                                 th:each="selectCategory,selectCategoryStat: ${tags}"
+                                 th:class="${selectCategoryStat.first ? 'active tab-pane':'tab-pane'}">
+                                <span class="label label-success" th:each="selectTag: ${selectCategory.tags}">
+                                    <span onclick="selectTag(this)" th:data-tag="${selectTag}"
+                                          th:text="${'  '+selectTag}"></span>
+                                </span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="container-fluid main ">
+                    <div class="row">
+                        <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
+                            <div class="alert alert-danger col-lg-12 col-md-12 col-sm-12 col-xs-12"
+                                 th:text="${error}"
+                                 th:if="${error != null}">
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+                            <button type="submit" class="btn btn-success btn-publish ">
+                                发布
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <p  class="foot">Copyright © 2020 OLand · <a href="http://www.beian.miit.gov.cn/">蜀ICP备20011349</a> · by zhuhaoyu · All Rights Reserved Powered</p>
+        </div>
+        <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+            <h3>问题发起指南</h3>
+            ·富强<br> ·明主<br>·文明<br>·和谐<br>·自由<br>·平等<br>·公正<br>·法治<br>·爱国<br>·敬业<br>·诚信<br>·友善
+        </div>
+    </div>
+</div>
+</body>
+</html>

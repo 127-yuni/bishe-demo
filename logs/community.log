@@ -1,0 +1,20 @@
+2022-03-05 13:05:51.698  INFO 10512 --- [restartedMain] h.niubi.community.CommunityApplication   : Starting CommunityApplication on LAPTOP-6007S891 with PID 10512 (started by 18345 in D:\idea project\first-repository-1.2)
+2022-03-05 13:05:51.721  INFO 10512 --- [restartedMain] h.niubi.community.CommunityApplication   : No active profile set, falling back to default profiles: default
+2022-03-05 13:05:51.797  INFO 10512 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-03-05 13:05:51.797  INFO 10512 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-03-05 13:05:51.873  WARN 10512 --- [background-preinit] o.s.h.c.j.Jackson2ObjectMapperBuilder    : For Jackson Kotlin classes support please add "com.fasterxml.jackson.module:jackson-module-kotlin" to the classpath
+2022-03-05 13:05:52.823  INFO 10512 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2022-03-05 13:05:52.828  INFO 10512 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2022-03-05 13:05:52.868  INFO 10512 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 17ms. Found 0 Redis repository interfaces.
+2022-03-05 13:05:53.306  INFO 10512 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'redisConfig' of type [haoyu.niubi.community.config.RedisConfig$$EnhancerBySpringCGLIB$$12ed75b4] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-03-05 13:05:53.318  INFO 10512 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-03-05 13:05:53.848  INFO 10512 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8886 (http)
+2022-03-05 13:05:53.860  INFO 10512 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-03-05 13:05:53.864  INFO 10512 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.30]
+2022-03-05 13:05:53.992  INFO 10512 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-03-05 13:05:53.992  INFO 10512 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2195 ms
+2022-03-05 13:05:55.495  INFO 10512 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2022-03-05 13:05:55.607  INFO 10512 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2022-03-05 13:05:56.098  INFO 10512 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-03-05 13:05:56.176  INFO 10512 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8886 (http) with context path ''
+2022-03-05 13:05:56.180  INFO 10512 --- [restartedMain] h.niubi.community.CommunityApplication   : Started CommunityApplication in 5.056 seconds (JVM running for 6.652)

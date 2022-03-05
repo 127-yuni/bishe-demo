@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>OLAND</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/css/community.css">
+    <link rel="shortcut icon" href="images/logos/logo.ico">
+    <script src="/js/bootstrap.min.js" type="application/javascript"></script>
+    <script src="/js/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+<div th:insert="~{navigation :: nav}"></div>
+<div class="container-fluid main">
+            <div class="jumbotron">
+                <h1>服务器炸了！！！</h1>
+                <p th:text="${message}"></p>
+                <p><a class="btn btn-primary btn-lg" href="/" role="button">逃到主页</a></p>
+            </div>
+    </div>
+<p  class="foot">Copyright © 2020 OLand · <a href="http://www.beian.miit.gov.cn/">蜀ICP备20011349</a> · by zhuhaoyu · All Rights Reserved Powered</p>
+</body>
+</html>

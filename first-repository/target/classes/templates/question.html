@@ -1,0 +1,166 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="问题"></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/css/community.css">
+    <link rel="shortcut icon" href="images/logos/logo.ico">
+    <script src="/js/jquery-3.4.1.min.js"></script>
+    <script src="/js/bootstrap.min.js" type="application/javascript"></script>
+    <script src="/js/community.js" type="application/javascript"></script>
+    <script src="/js/moment.js" type="application/javascript"></script>
+</head>
+<body>
+<div th:insert="~{navigation :: nav}"></div>
+<div class="container-fluid main profile">
+    <div class="row">
+        <!--左边-->
+        <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 con-left">
+            <div class="con-left">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <h2><span th:text="${question.title}"></span></h2>
+                    <span class="text-desc">
+                    作者： <span th:text="${question.user.username}"></span>  |
+                   阅读数： <span th:text="${viewCount}"></span>  |
+                    发布时间：<span th:text="${#dates.format(question.gmtModified,'yyyy-MM-dd HH:mm')}"></span>
+                </span>
+<!--                    <hr style=" height:2px;border:none;border-top: 2px solid #cbcbcd">-->
+                    <hr>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" th:text="${question.description}"></div>
+                    <hr>
+                </div>
+<!--                <hr class="col-lg-12 col-md-12 col-sm-12 col-xs-12 comment-sp"-->
+<!--                    style=" height:2px;border:none;border-top: 2px solid #cbcbcd">-->
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <a th:href="@{'/publish/'+${question.id}}"
+                       th:if="${session.user!=null&&session.user.uuid==question.creator}" class="margin-left community-menu ">
+                        <span class="glyphicon glyphicon-pencil" aria-hidden="true">编辑</span>
+                    </a>
+                </div>
+                <!--标签-->
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <span class="label label-success question-tag" th:each="tag : ${question.tag.split(',')} ">
+                        <span class="glyphicon glyphicon-tags"></span>
+                        <span class="label label-success" th:text="${tag}"></span>
+                    </span>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <h4>
+                        <span th:text="${question.commentCount}"></span> 个回复
+                    </h4>
+                    <!--                回复的显示--><!--         ctrl+？       -->
+<!--                    <hr class="col-lg-12 col-md-12 col-sm-12 col-xs-12 comment-sp"-->
+<!--                        style=" height:2px;border:none;border-top: 2px solid #cbcbcd">-->
+                    <hr>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 " th:each="comment : ${comments}">
+                    <div class="media">
+                        <div class="media-left">
+                            <a href="#">
+                                <img class="media-object img-rounded"
+                                     th:src="${comment.user.avatar}">
+                            </a>
+                        </div>
+                        <div class="media-body" th:id="${'comment-body-'+comment.id}">
+                            <h5 class="media-heading">
+                                <span th:text="${comment.user.username}"></span>
+                            </h5>
+                            <span th:text="${comment.content}"></span>
+                            <div class="menu">
+                                <!--点赞图标-->
+                                <span th:data-id="${comment.id}" onclick="upComment(this)">
+                                    <svg t="1612615355106" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3614" xmlns:xlink="http://www.w3.org/1999/xlink" width="18" height="18"><defs><style type="text/css"/></defs><path d="M995.46 434.45a82.52 82.52 0 0 0-66.84-33.58H630c19.44-82 58.71-276.28 14.81-350.77-10.51-17.79-25.59-29.56-43.63-34.1-32.2-8.11-62.63-3.82-88.05 12.29-50.45 31.9-65 98.17-66.73 107.12C426.93 271.8 302.11 377 271.69 400.87h-93a27.76 27.76 0 0 0-27.78 27.78v555.54a27.76 27.76 0 0 0 27.75 27.81H754a138 138 0 0 0 133-99l121.44-404.86a82.57 82.57 0 0 0-12.98-73.69z m-40.26 57.73L833.76 897A82.82 82.82 0 0 1 754 956.41H206.44v-500h69.44c0.74 0 1.35-0.36 2.08-0.42a27.36 27.36 0 0 0 19.24-4.76c7.3-5.21 178.73-129.47 203.93-306.42 2.58-12.83 15.73-53.14 41.69-69.58 12.64-7.95 27.32-9.68 44.89-5.34 1.36 0.35 5 1.27 9.22 8.41 31.14 52.84-1.46 238.55-29.32 343.17a26.34 26.34 0 0 0-0.22 3.54 26 26 0 0 0-0.73 3.62c0 0.68 0.34 1.25 0.39 1.93a26.64 26.64 0 0 0 1.11 5.47 24.29 24.29 0 0 0 12.26 16 26.54 26.54 0 0 0 5.17 2.56c0.61 0.21 1.06 0.67 1.69 0.84a27.39 27.39 0 0 0 7.11 0.94h334.23a27.75 27.75 0 0 1 26.58 35.75zM39.78 400.87A27.76 27.76 0 0 0 12 428.65v555.54a27.78 27.78 0 0 0 55.55 0V428.65a27.76 27.76 0 0 0-27.77-27.78z" p-id="3615"/></svg>
+                                    <span th:text="${comment.likeCount}"> </span>
+                                </span>
+    <!--                         二级消息列表-->
+                                <span th:data-id="${comment.id}" onclick="collapseComments(this)" class="comment-icon">
+                                    <svg t="1612615734460" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4420" xmlns:xlink="http://www.w3.org/1999/xlink" width="18" height="18"><defs><style type="text/css"/></defs><path d="M304 431.3m-60 0a60 60 0 1 0 120 0 60 60 0 1 0-120 0Z" fill="" p-id="4421"/><path d="M512 431.3m-60 0a60 60 0 1 0 120 0 60 60 0 1 0-120 0Z" fill="" p-id="4422"/><path d="M720 431.3m-60 0a60 60 0 1 0 120 0 60 60 0 1 0-120 0Z" fill="" p-id="4423"/><path d="M930 79.3H94c-51.9 0-94 42.1-94 94v516c0 51.9 42.1 94 94 94h216V917.6c0.4 4.1 1.6 8.3 3.9 12.1 8.2 14.3 26.7 19.2 41 11L370 932l250.6-144.7c4.6-2.6 9.7-4 15-4H930c51.9 0 94-42.1 94-94v-516c0-51.9-42.1-94-94-94z m34 610c0 18.8-15.2 34-34 34H617.9c-4 0-8.1 0.9-11.6 3h-0.1l-98.7 57L370 862.7V753.3c0-16.6-13.4-30-30-30H94c-18.8 0-34-15.2-34-34v-516c0-18.8 15.2-34 34-34h836c18.8 0 34 15.2 34 34v516z" fill="" p-id="4424"/></svg>
+                                    <span th:text="${comment.commentCount}"></span>
+                                </span>
+                                <span class="pull-right"
+                                      th:text="${#dates.format(comment.gmtModified,'yyyy-MM-dd')}"></span>
+                            </div>
+                                <!--二级评论-->
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 collapse sub-comments"
+                                 th:id="${'comment-'+comment.id}">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <input type="text" class="form-control" placeholder="评论一下……"
+                                           th:id="${'input-'+comment.id}">
+                                    <button type="button" class="btn btn-success pull-right" onclick="comment(this)"
+                                            th:data-id="${comment.id}">评论
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--回复框-->
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <h4>提交回复</h4>
+<!--                        <hr class="col-lg-12 col-md-12 col-sm-12 col-xs-12 comment-sp"-->
+<!--                            style=" height:2px;border:none;border-top: 2px solid #cbcbcd">-->
+                    <hr>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="comment_section">
+                    <div class="media">
+                        <div class="media-left">
+                            <a href="#">
+                                <img class="media-object img-rounded"
+                                     th:src="${session.user != null ?session.user.avatar :'/images/user.png'}">
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <h4 class="media-heading">
+                                <span th:text="${session.user != null ?session.user.username :'匿名用户'}"></span>
+                            </h4>
+                        </div>
+                    </div>
+                        <input type="hidden" id="question_id" th:value="${question.id}">
+                        <textarea class="form-control comment" rows="6" id="comment_content"></textarea>
+                        <button type="button" class="btn btn-success btn-comment" onclick="post()">回复</button>
+                </div>
+<!--                <p  class="foot">Copyright © 2020 OLand · <a href="http://www.beian.miit.gov.cn/">蜀ICP备20011349</a> · by zhuhaoyu · All Rights Reserved Powered</p>-->
+            </div>
+        </div>
+        <!--右边-->
+        <div class="col-lg-3 col-md-12 col-sm-12">
+            <div class="con-right text-muted hidden-xs">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <h3>发起人</h3>
+                    <div class="media">
+                        <div class="media-left">
+                            <a href="#">
+                                <img class="media-object img-rounded"
+                                     th:src="${question.user.avatar}">
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <h4 class="media-heading">
+                                <span th:text="${question.user.username}"></span>
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+                <!--支付图片-->
+<!--                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">-->
+<!--&lt;!&ndash;                    <h4>感谢投食棒棒糖</h4>&ndash;&gt;-->
+<!--&lt;!&ndash;    &lt;!&ndash;                <img src="/css/pay2.jpg" class="pay"/>&ndash;&gt;&ndash;&gt;-->
+<!--                </div>-->
+<!--                <hr>-->
+                <!--相关问题-->
+<!--                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">-->
+<!--                    <h3>相关问题</h3>-->
+<!--                    <ul class="question-related">-->
+<!--                        <li th:each="related : ${relatedQuestions}" class="question-bottom">-->
+<!--                            <a th:href="@{'/question/'+${related.id}}" th:text="${related.title}"></a>-->
+<!--                        </li>-->
+<!--                    </ul>-->
+<!--                </div>-->
+            </div>
+        </div>
+    </div>
+    <p  class="foot">Copyright © 2020 OLand · <a href="http://www.beian.miit.gov.cn/">蜀ICP备20011349</a> · by zhuhaoyu · All Rights Reserved Powered</p>
+</div>
+</body>
+</html>

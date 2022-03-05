@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="denglu@localhost" uuid="ac52d0b9-4767-4626-8d15-50429a1b155c">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306/denglu</jdbc-url>
+      <driver-properties>
+        <property name="allowMultiQueries" value="TRUE" />
+        <property name="serverConfigCacheFactory" value="com.mysql.cj.util.PerVmServerConfigCacheFactorys" />
+        <property name="serverTimezone" value="UTC" />
+      </driver-properties>
+    </data-source>
+  </component>
+</project>

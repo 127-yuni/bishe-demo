@@ -1,0 +1,24 @@
+2022-02-03 14:10:36.517  INFO 22004 --- [main] h.niubi.community.Demo1ApplicationTests  : Starting Demo1ApplicationTests on LAPTOP-6007S891 with PID 22004 (started by 18345 in D:\idea project\first-repository\first-repository)
+2022-02-03 14:10:36.525  INFO 22004 --- [main] h.niubi.community.Demo1ApplicationTests  : No active profile set, falling back to default profiles: default
+2022-02-03 14:10:36.925  WARN 22004 --- [background-preinit] o.s.h.c.j.Jackson2ObjectMapperBuilder    : For Jackson Kotlin classes support please add "com.fasterxml.jackson.module:jackson-module-kotlin" to the classpath
+2022-02-03 14:10:37.621  INFO 22004 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2022-02-03 14:10:37.630  INFO 22004 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2022-02-03 14:10:37.678  INFO 22004 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 20ms. Found 0 Redis repository interfaces.
+2022-02-03 14:10:38.388  INFO 22004 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'redisConfig' of type [haoyu.niubi.community.config.RedisConfig$$EnhancerBySpringCGLIB$$624a8be6] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-02-03 14:10:38.396  INFO 22004 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-02-03 14:10:41.338  INFO 22004 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2022-02-03 14:10:41.542  INFO 22004 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2022-02-03 14:10:42.291  INFO 22004 --- [main] h.niubi.community.Demo1ApplicationTests  : Started Demo1ApplicationTests in 6.202 seconds (JVM running for 7.981)
+2022-02-03 14:10:42.698  INFO 22004 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2022-02-03 14:18:17.384  INFO 9772 --- [main] h.niubi.community.Demo1ApplicationTests  : Starting Demo1ApplicationTests on LAPTOP-6007S891 with PID 9772 (started by 18345 in D:\idea project\first-repository\first-repository)
+2022-02-03 14:18:17.384  INFO 9772 --- [main] h.niubi.community.Demo1ApplicationTests  : No active profile set, falling back to default profiles: default
+2022-02-03 14:18:17.800  WARN 9772 --- [background-preinit] o.s.h.c.j.Jackson2ObjectMapperBuilder    : For Jackson Kotlin classes support please add "com.fasterxml.jackson.module:jackson-module-kotlin" to the classpath
+2022-02-03 14:18:18.451  INFO 9772 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2022-02-03 14:18:18.461  INFO 9772 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2022-02-03 14:18:18.511  INFO 9772 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 25ms. Found 0 Redis repository interfaces.
+2022-02-03 14:18:19.282  INFO 9772 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'redisConfig' of type [haoyu.niubi.community.config.RedisConfig$$EnhancerBySpringCGLIB$$cc55b9f0] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-02-03 14:18:19.302  INFO 9772 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-02-03 14:18:22.138  INFO 9772 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2022-02-03 14:18:22.344  INFO 9772 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2022-02-03 14:18:23.033  INFO 9772 --- [main] h.niubi.community.Demo1ApplicationTests  : Started Demo1ApplicationTests in 6.136 seconds (JVM running for 7.779)
+2022-02-03 14:18:23.406  INFO 9772 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'

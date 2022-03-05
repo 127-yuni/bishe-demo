@@ -1,0 +1,78 @@
+<!--此段重复代码负责简化代码  -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<link rel="stylesheet" href="css/bootstrap.min.css"/>
+<link rel="stylesheet" href="css/bootstrap-theme.min.css">
+<!-- HTML5 shim 和 Respond.js 是为了让 IE8 支持 HTML5 元素和媒体查询（media queries）功能 -->
+<!-- 警告：通过 file:// 协议（就是直接将 html 页面拖拽到浏览器中）访问页面时 Respond.js 不起作用 -->
+<!--[if lt IE 9]>
+<script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+<body>
+<div th :fragment="nav">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">OLAND</span>
+                </button>
+                <a class="navbar-brand" href="/">OLAND</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <form class="navbar-form navbar-left" method="get">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="search" placeholder="搜索问题">
+                    </div>
+                    <button type="submit" class="btn btn-default">搜索</button>
+                </form>
+                <ul class="nav navbar-nav navbar-right">
+                    <!--   加入的代码     -->
+                    <li >
+                        <a href="#">首页</a>
+                    </li>
+                    <li >
+                        <a href="#">API</a>
+                    </li>
+                    <li >
+                        <a href="#">关于</a>
+                    </li>
+                    <li>
+                        <a href="#">注册</a>
+                    </li>
+                    <!--     加入的代码       -->
+                    <li th:if="${session.user} eq null">
+                        <a th:href="@{/oauth/render/dingding}">登录</a>
+                    </li>
+                    <!--                 更改头像       -->
+                    <li th:if="${session.user}!=null">
+                    <a th:href="@{/changeAvatar}">
+                        <img class="media-object img-rounded"  th:src="${session.user.avatar!=null?session.user.avatar:'images/Avatar1.png'}">
+                    </a>
+                    </li>
+                    <li class="dropdown" th:if="${session.user} != null">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                            aria-expanded="false">
+                            <span th:text="${session.user.getUsername()}"></span>
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li ><a th:href="@{/userPage/}+${session.user.uuid}">个人主页</a></li>
+                            <li><a href="/profile/questions">我的问题</a></li>
+                            <li th:if="${session.user} != null">
+                                <a href="/publish">提问</a>
+                            </li>
+                            <li><a href="/profile/replies">通知<span class="badge" th:text="${session.unreadCount}"></span></a></li>
+                            <li><a href="/logOut">退出登录</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+</body>
+</html>
