@@ -1,0 +1,78 @@
+.login-box {
+    padding-top: 28%;
+    height: 100%;
+    background-color: #e2edff;
+}
+.login-form {
+    background-color: #fff;
+    width: 358px;
+    height: 588px;
+    border-radius: 15px;
+    padding: 0 50px;
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.logo {
+    font-size: 38px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 200px;
+}
+.input-item {
+    display: block;
+    width: 100%;
+    margin-bottom: 20px;
+    border: 0;
+    padding: 10px;
+    border-bottom: 1px solid rgb(128, 125, 125);
+    font-size: 15px;
+    outline: none;
+}
+
+.btn {
+    text-align: center;
+    padding: 10px;
+    width: 100%;
+    margin-top: 40px;
+    color: #fff;
+}
+.setting {
+    text-align: right;
+    font-size: 10px;
+    color: rgb(191, 223, 250);
+    float: left;
+}
+a {
+    text-decoration-line: none;
+    color: #abc1ee;
+}
+.forget{
+    padding-left: 230px;
+}
+.button {
+    background-color: rgb(191, 223, 250);
+    color: rgb(255, 255, 255);
+    border-style: hidden;
+    border-radius: 5px;
+    width: 100px;
+    height: 31px;
+    font-size: 16px;
+    margin:0 30px;
+}
+.login-third p{
+    padding-top: 5px;
+    color: rgb(221, 231, 253);
+    text-align: center;
+}
+.login-third-items{
+    padding: 0 20px;
+    height: 44px;
+    left: 44px;
+    text-align: center;
+}
+.login-third-items img{
+    width: 30px;
+    vertical-align: middle;
+}
